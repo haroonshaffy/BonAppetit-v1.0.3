@@ -1,7 +1,6 @@
-import React from "react";
-import RootNavigation from "./navigation";
-
 import * as firebase from "firebase";
+// import "firebase/compat/auth";
+// import "firebase/compat/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCZlzgNX9sWwUXASOsaMemUuNwy27geY6w",
@@ -12,8 +11,6 @@ const firebaseConfig = {
   appId: "1:489325912056:web:ab91f798a422fd317dc00d",
 };
 
-firebase.initializeApp(firebaseConfig);
+!firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
 
-export default function App() {
-  return <RootNavigation />;
-}
+export default firebase;
