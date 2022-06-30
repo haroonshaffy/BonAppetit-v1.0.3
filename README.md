@@ -29,4 +29,4 @@
 
 ## 📸 Screenshots from the application
 
-<img src="assets/bon-appetit-1.png" alt="Screenshot 1 from the app" width="200"/> <img src="assets/bon-appetit-2.png" alt="Screenshot 2 from the app" width="200"/> <img src="assets/bon-appetit-3.png" alt="Screenshot 3 from the app" width="200"/> <img src="assets/bon-appetit-4.png" alt="Screenshot 4 from the app" width="200"/>
+<img src="assets/bon-appetit-5.png" alt="Screenshot 1 from the app" width="200"/> <img src="assets/bon-appetit-6.png" alt="Screenshot 2 from the app" width="200"/> <img src="assets/bon-appetit-7.png" alt="Screenshot 3 from the app" width="200"/> <img src="assets/bon-appetit-8.png" alt="Screenshot 4 from the app" width="200"/>
