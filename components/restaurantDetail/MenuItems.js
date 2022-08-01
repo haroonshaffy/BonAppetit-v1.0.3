@@ -1,6 +1,14 @@
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  BackHandler,
+} from "react-native";
 import React from "react";
 import { Divider } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -24,9 +32,42 @@ export default function MenuItems({
   hideCheckbox,
   marginLeft,
 }) {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
-  const selectItem = (item, checkboxValue) =>
-    dispatch({
+  const { items } = useSelector((state) => state.cartReducer.selectedItems);
+  const [itemsList, updateItemsList] = React.useState(items);
+  const itemsRef = React.useRef(itemsList);
+
+  const removeItemsFromCart = () => {
+    let index = navigation.getState().index - 1;
+    let routeName = navigation.getState().routeNames[index];
+    console.log("SELECTITEM  ==>", routeName);
+    navigation.goBack();
+    if (routeName === "Home") {
+      dispatch({
+        type: "EMPTY_CART",
+        payload: {
+          ...itemsRef.current,
+          restaurantName: "",
+          checkboxValue: false,
+        },
+      });
+    }
+
+    return true;
+  };
+
+  React.useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", removeItemsFromCart);
+  }, []);
+
+  React.useEffect(() => {
+    itemsRef.current = itemsList;
+  }, [itemsList]);
+
+  const selectItem = (item, checkboxValue) => {
+    console.log("SELECTITEM  ==>", item, checkboxValue);
+    return dispatch({
       type: "ADD_TO_CART",
       payload: {
         ...item,
@@ -34,6 +75,7 @@ export default function MenuItems({
         checkboxValue: checkboxValue,
       },
     });
+  };
 
   const cartItems = useSelector(
     (state) => state.cartReducer.selectedItems.items

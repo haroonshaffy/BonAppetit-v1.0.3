@@ -20,9 +20,23 @@ export default function ViewCart({ navigation }) {
     currency: "CAD",
   });
 
-  const totalUber = total + 4 + (16 % total);
-  const totalSkip = total + (8 % total) + (16 % total);
-  const totalDoordash = total + (8 % total) + (17 % total);
+  const uberServiceFee = 10 % total;
+  const skipServiceFee = 8 % total;
+  const doordashServiceFee = 11 % total;
+
+  const uberServiceTax = 16 % total;
+  const skipServiceTax = 17 % total;
+  const doordashServiceTax = 15 % total;
+
+  const uberDeliveryFee = 1;
+  const skipDeliveryFee = 4;
+  const doordashDeliveryFee = 5;
+
+  const totalUber = total + uberServiceFee + uberServiceTax + uberDeliveryFee;
+  const totalSkip = total + skipServiceFee + skipServiceTax + skipDeliveryFee;
+  const totalDoordash =
+    total + doordashServiceFee + doordashServiceTax + doordashDeliveryFee;
+
   console.log(totalUber);
   console.log(totalSkip);
   console.log(totalDoordash);
@@ -39,6 +53,15 @@ export default function ViewCart({ navigation }) {
       uber: totalUber,
       skip: totalSkip,
       doordash: totalDoordash,
+      uberservicefee: uberServiceFee,
+      uberservicetax: uberServiceTax,
+      skipservicefee: skipServiceFee,
+      skipservicetax: skipServiceTax,
+      doordashservicefee: doordashServiceFee,
+      doordashservicetax: doordashServiceTax,
+      uberdeliveryfee: uberDeliveryFee,
+      skipdeliveryfee: skipDeliveryFee,
+      doordashdeliveryfee: doordashDeliveryFee,
     });
   };
 
@@ -94,9 +117,11 @@ export default function ViewCart({ navigation }) {
               <TouchableOpacity
                 style={{
                   marginTop: 20,
-                  backgroundColor: "black",
+                  backgroundColor: "#d2e7df",
                   alignItems: "center",
                   padding: 13,
+                  borderColor: "black",
+                  borderWidth: 1,
                   borderRadius: 30,
                   width: 300,
                   position: "relative",
@@ -107,8 +132,9 @@ export default function ViewCart({ navigation }) {
               >
                 <Text
                   style={{
-                    color: "white",
+                    color: "black",
                     fontSize: 20,
+                    fontWeight: "600",
                   }}
                 >
                   Compare Delivery Prices
@@ -154,20 +180,31 @@ export default function ViewCart({ navigation }) {
             <TouchableOpacity
               style={{
                 marginTop: 20,
-                backgroundColor: "black",
+                backgroundColor: "#d2e7df",
                 flexDirection: "row",
                 justifyContent: "flex-end",
                 padding: 15,
+                borderColor: "black",
+                borderWidth: 1,
                 borderRadius: 30,
                 width: 300,
                 position: "relative",
               }}
               onPress={() => setModalVisible(true)}
             >
-              <Text style={{ color: "white", fontSize: 20, marginRight: 30 }}>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 20,
+                  marginRight: 45,
+                  fontWeight: "600",
+                }}
+              >
                 View Cart
               </Text>
-              <Text style={{ color: "white", fontSize: 20 }}>${totalCAD}</Text>
+              <Text style={{ color: "black", fontSize: 20, fontWeight: "600" }}>
+                ${totalCAD}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import HeaderTabs from "../components/home/HeaderTabs";
 import SearchBar from "../components/home/SearchBar";
 import Categories from "../components/home/Categories";
@@ -45,20 +45,20 @@ export default function Home({ navigation }) {
   }, [city, activeTab]);
 
   return (
-    <View style={{ backgroundColor: "#eee", flex: 1 }}>
+    <View style={{ backgroundColor: "#d2e7df", flex: 1 }}>
       <View style={{ backgroundColor: "white", padding: 15 }}>
         <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         <SearchBar cityHandler={setCity} />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Categories />
+        {/*<Categories />*/}
         <RestaurantItems
           restaurantData={restaurantData}
           navigation={navigation}
         />
       </ScrollView>
       <Divider width={1} />
-      <BottomTabs />
+      {/*<BottomTabs />*/}
     </View>
   );
 }

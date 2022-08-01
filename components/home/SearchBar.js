@@ -17,13 +17,13 @@ export default function SearchBar({ cityHandler }) {
         placeholder="Search"
         styles={{
           textInput: {
-            backgroundColor: "#eee",
+            backgroundColor: "#d2e7df",
             borderRadius: 20,
             fontWeight: "700",
             marginTop: 7,
           },
           textInputContainer: {
-            backgroundColor: "#eee",
+            backgroundColor: "#d2e7df",
             borderRadius: 50,
             flexDirection: "row",
             alignItems: "center",
@@ -32,7 +32,11 @@ export default function SearchBar({ cityHandler }) {
         }}
         renderLeftButton={() => (
           <View style={{ marginLeft: 10 }}>
-            <Ionicons name="location-sharp" size={24} />
+            <Ionicons
+              name="location-sharp"
+              size={24}
+              style={{ color: "black" }}
+            />
           </View>
         )}
         renderRightButton={() => (
@@ -49,7 +53,7 @@ export default function SearchBar({ cityHandler }) {
             <AntDesign
               name="clockcircle"
               size={11}
-              style={{ marginRight: 6 }}
+              style={{ marginRight: 6, color: "black" }}
             />
             <Text>Search</Text>
           </View>

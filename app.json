@@ -4,7 +4,7 @@
     "slug": "bon-appetit",
     "privacy": "public",
     "description": "An application that compares the approximate delivery prices among the most common food delivery apps in North America",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/bon_appetit_icon.png",
     "userInterfaceStyle": "light",

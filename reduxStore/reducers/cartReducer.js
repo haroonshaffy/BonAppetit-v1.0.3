@@ -28,7 +28,13 @@ let cartReducer = (state = defaultState, action) => {
       console.log(newState, "👉");
       return newState;
     }
-
+    case "EMPTY_CART":
+      let newState = { ...state };
+      newState.selectedItems = {
+        items: [],
+        restaurantName: "",
+      };
+      return newState;
     default:
       return state;
   }
